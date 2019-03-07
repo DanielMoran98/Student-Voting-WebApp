@@ -1,0 +1,28 @@
+body{
+    background-color:#48083b !important;
+
+}
+
+.main-content{
+    background-color:white;
+    border-radius:15px;
+    padding: 25px;
+}
+img{
+    text-align:center;
+}
+input{
+    width:100%;
+    margin-bottom:10px !important;
+    padding:5px 5px;
+}
+input :last-of-type{
+    padding:20px;
+    margin-top:10px;
+}
+
+#submitbutton{
+    border-style:none;
+    color:white !important;
+    background-color: #40798c !important;
+}

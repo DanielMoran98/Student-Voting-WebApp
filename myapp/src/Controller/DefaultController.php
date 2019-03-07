@@ -16,4 +16,34 @@ class DefaultController extends AbstractController
         $args = ['controller_name' => 'DefaultController'];
         return $this->render($template,$args);
     }
+
+    /**
+     * @Route("/about", name="default_about")
+     */
+    public function about()
+    {
+        $template = 'default/index.html.twig';
+        $args = ['controller_name' => 'DefaultController'];
+        return $this->render($template,$args);
+    }
+
+    /**
+     * @Route("/upcoming", name="default_upcoming")
+     */
+    public function upcoming()
+    {
+        $template = 'default/index.html.twig';
+        $args = ['controller_name' => 'DefaultController'];
+        return $this->render($template,$args);
+    }
+
+    /**
+     * @Route("/vote", name="default_vote")
+     */
+    public function vote()
+    {
+        $template = 'default/index.html.twig';
+        $args = ['controller_name' => 'DefaultController'];
+        return $this->render($template,$args);
+    }
 }
