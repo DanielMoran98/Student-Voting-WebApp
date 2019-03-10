@@ -1,0 +1,21 @@
+Entities
+
+Poll
+  ATTRIBUTES
+    int id
+    VARCHAR description
+    VARCHAR option1
+    VARCHAR option2
+    INT for
+    INT against
+    VARCHAR author
+    DATE? deadline
+    INT state
+
+Proposition
+    INT id
+    VARCHAR description
+
+Vote
+    INT ID
+    VARCHAR user
