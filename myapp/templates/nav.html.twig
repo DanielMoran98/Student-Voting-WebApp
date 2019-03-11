@@ -22,7 +22,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'login' %}active{% endif %}" href="{{ url('login') }}" >LOGIN</a>
+                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'login' %}active{% endif %}" href="{{ url('app_login') }}" >LOGIN</a>
 
             </li>
         </ul>
