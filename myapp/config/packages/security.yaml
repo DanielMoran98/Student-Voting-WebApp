@@ -20,6 +20,10 @@ security:
             # activate different ways to authenticate
 
             http_basic: true
+            logout:
+                path: app_logout
+                invalidate_session: true
+
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
