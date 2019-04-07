@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,6 +34,28 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Vote", mappedBy="author")
+     */
+    private $votes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\VoteEntry", mappedBy="author", orphanRemoval=true)
+     */
+    private $voteEntries;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="author", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->votes = new ArrayCollection();
+        $this->voteEntries = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +128,99 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Vote[]
+     */
+    public function getVotes(): Collection
+    {
+        return $this->votes;
+    }
+
+    public function addVote(Vote $vote): self
+    {
+        if (!$this->votes->contains($vote)) {
+            $this->votes[] = $vote;
+            $vote->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVote(Vote $vote): self
+    {
+        if ($this->votes->contains($vote)) {
+            $this->votes->removeElement($vote);
+            // set the owning side to null (unless already changed)
+            if ($vote->getAuthor() === $this) {
+                $vote->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|VoteEntry[]
+     */
+    public function getVoteEntries(): Collection
+    {
+        return $this->voteEntries;
+    }
+
+    public function addVoteEntry(VoteEntry $voteEntry): self
+    {
+        if (!$this->voteEntries->contains($voteEntry)) {
+            $this->voteEntries[] = $voteEntry;
+            $voteEntry->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoteEntry(VoteEntry $voteEntry): self
+    {
+        if ($this->voteEntries->contains($voteEntry)) {
+            $this->voteEntries->removeElement($voteEntry);
+            // set the owning side to null (unless already changed)
+            if ($voteEntry->getAuthor() === $this) {
+                $voteEntry->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getAuthor() === $this) {
+                $comment->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 
 
