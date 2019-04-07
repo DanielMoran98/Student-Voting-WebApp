@@ -12,17 +12,17 @@ class UserFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        $user = new User();
-        $user->setUsername("Dano");
-        $user->setPassword("pass");
-        $user->setRoles(['ROLE_ADMIN']);
-        $manager->persist($user);
-
-        $user1 = new User();
-        $user1->setUsername("Tom");
-        $user1->setPassword("pass");
-        $user1->setRoles(['ROLE_USER']);
-        $manager->persist($user1);
+//        $user = new User();
+//        $user->setUsername("Dano");
+//        $user->setPassword("pass");
+//        $user->setRoles(['ROLE_ADMIN']);
+//        $manager->persist($user);
+//
+//        $user1 = new User();
+//        $user1->setUsername("Tom");
+//        $user1->setPassword("pass");
+//        $user1->setRoles(['ROLE_USER']);
+//        $manager->persist($user1);
 
         $manager->flush();
     }
