@@ -21,8 +21,8 @@
         {#</tr>#}
         {#</thead>#}
         {#<tbody>#}
-        {% for vote in votes %}
-            {% if vote.state == 0 %}
+        {#{% for vote in votes %}#}
+            {#{% if vote.state == 0 %}#}
                 {#<tr>#}
                     {#<td>{{ vote.id }}</td>#}
                     {#<td>{{ vote.title }}</td>#}
@@ -38,9 +38,11 @@
                     {#</td>#}
                 {#</tr>#}
                 <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    {% for vote in votes %}
+                    {% if vote.state == 0 %}
                     <div class="shadow p-3 mb-5 bg-light rounded">
                         <div class="card">
                            {% if vote.image is not null %}
@@ -55,19 +57,22 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
+                    <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary">CREATE NEW</a>
+
                 </div>
                 </div>
-            {% endif %}
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
+            {#{% endif %}#}
+        {#{% else %}#}
+            {#<tr>#}
+                {#<td colspan="9">no records found</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
     </table>
 
-    <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary">NEW</a>
 
 {% endblock %}

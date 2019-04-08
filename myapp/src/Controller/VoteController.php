@@ -79,6 +79,7 @@ class VoteController extends AbstractController
     {
         return $this->render('vote/show.html.twig', [
             'vote' => $vote,
+            'user' => $vote->getAuthor(),
         ]);
     }
 
