@@ -6,46 +6,73 @@
     <h1>Current polls</h1>
     <p>Active polls that you can participate in are shown here.</p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>ForCount</th>
-                <th>AgainstCount</th>
-                <th>DateCreated</th>
-                <th>State</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for vote in votes %}
-            {% if vote.state == 1 %}
-            <tr>
-                <td>{{ vote.id }}</td>
-                <td>{{ vote.title }}</td>
-                <td>{{ vote.description }}</td>
-                <td>{{ vote.image }}</td>
-                <td>{{ vote.forCount }}</td>
-                <td>{{ vote.againstCount }}</td>
-                <td>{{ vote.dateCreated ? vote.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ vote.state }}</td>
-                <td>
-                    <a href="{{ path('vote_show', {'id': vote.id}) }}">SHOW</a>
-                    <a href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>
-                </td>
-            </tr>
-            {% endif %}
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#<table class="table">#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Title</th>#}
+                {#<th>Description</th>#}
+                {#<th>Image</th>#}
+                {#<th>ForCount</th>#}
+                {#<th>AgainstCount</th>#}
+                {#<th>DateCreated</th>#}
+                {#<th>State</th>#}
+                {#<th>actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for vote in votes %}#}
+            {#{% if vote.supporters >= 50 and vote.state == 1 %}#}
+            {#<tr>#}
+                {#<td>{{ vote.id }}</td>#}
+                {#<td>{{ vote.title }}</td>#}
+                {#<td>{{ vote.description }}</td>#}
+                {#<td>{{ vote.image }}</td>#}
+                {#<td>{{ vote.forCount }}</td>#}
+                {#<td>{{ vote.againstCount }}</td>#}
+                {#<td>{{ vote.dateCreated ? vote.dateCreated|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#<td>{{ vote.state }}</td>#}
+                {#<td>#}
+                    {#<a href="{{ path('vote_show', {'id': vote.id}) }}">SHOW</a>#}
+                    {#<a href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>#}
+                {#</td>#}
+            {#</tr>#}
+            {#{% endif %}#}
+        {#{% else %}#}
+            {#<tr>#}
+                {#<td colspan="9">no records found</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
 
-    <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary">NEW</a>
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+            {% for vote in votes %}
+                {% if vote.supporters >= 50 and vote.state == 1 %}
+                    <div class="shadow p-3 mb-5 bg-light rounded">
+                        <div class="card">
+                            {% if vote.image is not null %}
+                                <img class="card-img-left" src="{{ vote.image }}" alt="Card image cap" style="">
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title">{{ vote.title }}</h4>
+                                <p class="card-text">
+                                    {{ vote.description }}
+                                </p>
+                                <a href="{{ url('vote_show',{'id': vote.id} ) }}" class="btn btn-primary">Participate in vote</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-lg-4">
+            <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary" style="float:right;">CREATE NEW</a>
+
+        </div>
+    </div>
 
 {% endblock %}

@@ -42,11 +42,11 @@
                 </div>
                 <div class="col-sm-4">
                     {% for vote in votes %}
-                    {% if vote.state == 0 %}
+                    {% if vote.supporters < 50 %}
                     <div class="shadow p-3 mb-5 bg-light rounded">
                         <div class="card">
                            {% if vote.image is not null %}
-                            <img class="card-img-left" src="{{ vote.image }}" alt="Card image cap" style="float:left;">
+                            <img class="card-img-left" src="{{ vote.image }}" alt="Card image cap" style="">
                             {% endif %}
                             <div class="card-body">
                                 <h4 class="card-title">{{ vote.title }}</h4>

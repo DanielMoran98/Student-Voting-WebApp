@@ -60,10 +60,37 @@
                                 <p class="card-text">
                                     {{ vote.description }}
                                 </p>
-                                <span class="badge ">Current supporters: {{ vote.supporters }}/50</span><br>
-                                <a href="#!" class="btn btn-primary">Support proposition {{ vote.id }}</a>
+                                {% if vote.supporters < 50 and vote.state == 1 %}
+                                    <span class="badge ">Current supporters: {{ vote.supporters }}/50</span><br>
+                                    <a href="#!" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
+                                {% endif %}
+                                {% if vote.supporters >= 50 and vote.state == 1 %}
+                                    <a href="#!" class="btn btn-success" style="width:49%">Vote for</a>
+                                    <a href="#!" class="btn btn-danger" style="width:49%">Vote against</a>
+                                {% endif %}
+                                {% if vote.state == 0 %}
+                                    <div class="alert alert-warning" role="alert">
+                                        Unfortunately the vote is finished so you can no longer vote. The results for the vote are available below.
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
+                        {% if vote.state == 0 %}
+                        <div class="card" style="padding:25px;">
+                            <h3>Results</h3>
+                            <canvas id="myChart"></canvas>
+                            <br><br>
+                            <div class="row" style="text-align: center;">
+                                <div class="col-sm-6">
+                                    For: {{ vote.forCount }}
+                                </div>
+                                <div class="col-sm-6">
+                                    Against: {{ vote.againstCount }}
+                                </div>
+                            </div>
+
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="col-sm-2">
                         <a href="{{ path('vote_index') }}">BACK TO LIST</a>
@@ -76,5 +103,27 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        new Chart(document.getElementById("myChart"), {
+            type: 'bar',
+            data: {
+                labels: ["For", "Against"],
+                datasets: [
+                    {
+                        label: "Votes",
+                        backgroundColor: ["#28a745", "#dc3545"],
+                        data: [{{ vote.forCount }},{{ vote.againstCount }},0]
+                    }
+                ]
+            },
+            options: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Vote results for Proposition #{{ vote.id }}'
+                }
+            }
+        });
+    </script>
 {% endblock %}

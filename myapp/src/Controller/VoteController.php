@@ -112,12 +112,35 @@ class VoteController extends AbstractController
      */
     public function delete(Request $request, Vote $vote): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$vote->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $vote->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($vote);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('vote_index');
+    }
+
+
+
+
+
+//
+
+    /**
+     *
+     * @Route("/{id}/support", name="vote_support", methods={"GET"})
+     */
+    public function support(Vote $vote): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'UPDATE vote
+            SET supporters = supporters + 1
+            WHERE id = 3;'
+        );
+        $query->execute();
+        return $this->redirectToRoute('vote_index');
+
     }
 }

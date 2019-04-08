@@ -17,7 +17,7 @@
                 <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_proposition' %}active{% endif %}" href="{{ url('vote_propositions') }}">PROPOSITIONS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_index' %}active{% endif %}" href="{{ url('vote_index') }}">VOTES</a>
+                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_index' or app.request.attributes.get('_route') starts with 'vote_show'  %}active{% endif %}" href="{{ url('vote_index') }}">VOTES</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_finished' %}active{% endif %}" href="{{ url('vote_finished') }}">FINISHED</a>

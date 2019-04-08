@@ -82,7 +82,7 @@ class Vote
 
         $this->forCount = 0;
         $this->againstCount = 0;
-        $this->state = 0;
+        $this->state = 1;
         $this->dateCreated = new \DateTime('now');
         $this->supporters=0;
     }
