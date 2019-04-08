@@ -14,3 +14,11 @@ a{
 .btn-primary{
     background-color: #40798c;
 }
+.card>img{
+    max-height: 300px;
+    border-top-left-radius:0.25rem;
+    border-top-right-radius:0.25rem;
+}
+.shadow{
+    padding:0px !important;
+}
