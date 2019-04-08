@@ -70,6 +70,11 @@ class Vote
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $supporters;
+
     public function __construct()
     {
         $this->voteEntries = new ArrayCollection();
@@ -79,6 +84,7 @@ class Vote
         $this->againstCount = 0;
         $this->state = 0;
         $this->dateCreated = new \DateTime('now');
+        $this->supporters=0;
     }
 
     public function getId(): ?int
@@ -245,5 +251,17 @@ class Vote
     }
     public function __toString() {
         return $this->title;
+    }
+
+    public function getSupporters(): ?int
+    {
+        return $this->supporters;
+    }
+
+    public function setSupporters(int $supporters): self
+    {
+        $this->supporters = $supporters;
+
+        return $this;
     }
 }
