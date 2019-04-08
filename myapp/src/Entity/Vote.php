@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
@@ -72,6 +74,11 @@ class Vote
     {
         $this->voteEntries = new ArrayCollection();
         $this->comments = new ArrayCollection();
+
+        $this->forCount = 0;
+        $this->againstCount = 0;
+        $this->state = 0;
+        $this->dateCreated = new \DateTime('now');
     }
 
     public function getId(): ?int
@@ -235,5 +242,8 @@ class Vote
         }
 
         return $this;
+    }
+    public function __toString() {
+        return $this->title;
     }
 }

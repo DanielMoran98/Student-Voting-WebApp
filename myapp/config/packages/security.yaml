@@ -16,6 +16,7 @@ security:
             security: false
         main:
             anonymous: true
+            #access_denied_handler: App\Security\AccessDeniedHandler
 
             # activate different ways to authenticate
 

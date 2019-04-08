@@ -37,13 +37,5 @@ class DefaultController extends AbstractController
         return $this->render($template,$args);
     }
 
-    /**
-     * @Route("/vote", name="default_vote")
-     */
-    public function vote()
-    {
-        $template = 'default/index.html.twig';
-        $args = ['controller_name' => 'DefaultController'];
-        return $this->render($template,$args);
-    }
+
 }

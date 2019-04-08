@@ -1,9 +1,9 @@
 <style>
-    @import "css/nav.css";
+    @import "/css/nav.css";
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark red">
-    <a class="navbar-brand" href="{{ url('default_index') }}"><img src="images/logo.png" alt="Logo"></a>
+    <a class="navbar-brand" href="{{ url('default_index') }}"><img src="/images/logo.png" alt="Logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,10 +14,13 @@
                 <a class="nav-link {% if app.request.attributes.get('_route') starts with 'default_index' %}active{% endif %}" href="{{ url('default_index') }}">HOME <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'upcoming_' %}active{% endif %}" href="#">PROPOSITIONS</a>
+                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_proposition' %}active{% endif %}" href="{{ url('vote_propositions') }}">PROPOSITIONS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'poll_' %}active{% endif %}" href="#">VOTES</a>
+                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_index' %}active{% endif %}" href="{{ url('vote_index') }}">VOTES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.attributes.get('_route') starts with 'vote_finished' %}active{% endif %}" href="{{ url('vote_finished') }}">FINISHED</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

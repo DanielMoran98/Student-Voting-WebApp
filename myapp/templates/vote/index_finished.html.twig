@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vote index{% endblock %}
+
+{% block body %}
+    <h1>Finished polls</h1>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>ForCount</th>
+            <th>AgainstCount</th>
+            <th>DateCreated</th>
+            <th>State</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for vote in votes %}
+            {% if vote.state == 2 %}
+                <tr>
+                    <td>{{ vote.id }}</td>
+                    <td>{{ vote.title }}</td>
+                    <td>{{ vote.description }}</td>
+                    <td>{{ vote.image }}</td>
+                    <td>{{ vote.forCount }}</td>
+                    <td>{{ vote.againstCount }}</td>
+                    <td>{{ vote.dateCreated ? vote.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ vote.state }}</td>
+                    <td>
+                        <a href="{{ path('vote_show', {'id': vote.id}) }}">SHOW</a>
+                        <a href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary">NEW</a>
+
+{% endblock %}
