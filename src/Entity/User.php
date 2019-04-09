@@ -50,11 +50,17 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SupportEntry", mappedBy="author", orphanRemoval=true)
+     */
+    private $supportEntries;
+
     public function __construct()
     {
         $this->votes = new ArrayCollection();
         $this->voteEntries = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->supportEntries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -225,6 +231,37 @@ class User implements UserInterface
 
     public function __toString() {
         return $this->username;
+    }
+
+    /**
+     * @return Collection|SupportEntry[]
+     */
+    public function getSupportEntries(): Collection
+    {
+        return $this->supportEntries;
+    }
+
+    public function addSupportEntry(SupportEntry $supportEntry): self
+    {
+        if (!$this->supportEntries->contains($supportEntry)) {
+            $this->supportEntries[] = $supportEntry;
+            $supportEntry->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSupportEntry(SupportEntry $supportEntry): self
+    {
+        if ($this->supportEntries->contains($supportEntry)) {
+            $this->supportEntries->removeElement($supportEntry);
+            // set the owning side to null (unless already changed)
+            if ($supportEntry->getAuthor() === $this) {
+                $supportEntry->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 
 }

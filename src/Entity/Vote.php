@@ -75,6 +75,11 @@ class Vote
      */
     private $supporters;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SupportEntry", mappedBy="vote", orphanRemoval=true)
+     */
+    private $supportEntries;
+
     public function __construct()
     {
         $this->voteEntries = new ArrayCollection();
@@ -85,6 +90,7 @@ class Vote
         $this->state = 1;
         $this->dateCreated = new \DateTime('now');
         $this->supporters=0;
+        $this->supportEntries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -261,6 +267,37 @@ class Vote
     public function setSupporters(int $supporters): self
     {
         $this->supporters = $supporters;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SupportEntry[]
+     */
+    public function getSupportEntries(): Collection
+    {
+        return $this->supportEntries;
+    }
+
+    public function addSupportEntry(SupportEntry $supportEntry): self
+    {
+        if (!$this->supportEntries->contains($supportEntry)) {
+            $this->supportEntries[] = $supportEntry;
+            $supportEntry->setVote($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSupportEntry(SupportEntry $supportEntry): self
+    {
+        if ($this->supportEntries->contains($supportEntry)) {
+            $this->supportEntries->removeElement($supportEntry);
+            // set the owning side to null (unless already changed)
+            if ($supportEntry->getVote() === $this) {
+                $supportEntry->setVote(null);
+            }
+        }
 
         return $this;
     }
