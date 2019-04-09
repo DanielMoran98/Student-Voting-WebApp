@@ -33,6 +33,13 @@ class VoteEntry
      */
     private $opinion;
 
+    public function __construct($vote, $author, $opinion)
+    {
+        $this->voteID = $vote;
+        $this->author = $author;
+        $this->opinion = $opinion;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

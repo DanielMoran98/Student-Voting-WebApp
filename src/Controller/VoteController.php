@@ -3,9 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Vote;
+use App\Entity\SupportEntry;
+use App\Entity\VoteEntry;
 use App\Form\VoteType;
 use App\Repository\VoteRepository;
+use App\Repository\SupportEntryRepository;
+use App\Repository\VoteEntryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -75,12 +80,26 @@ class VoteController extends AbstractController
      *
      * @Route("/{id}", name="vote_show", methods={"GET"})
      */
-    public function show(Vote $vote): Response
+    public function show(Vote $vote, $id): Response
     {
-        return $this->render('vote/show.html.twig', [
-            'vote' => $vote,
-            'user' => $vote->getAuthor(),
-        ]);
+
+        try{
+            $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
+            $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
+            $opinion = $voteCheck->getOpinion();
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'userOpinion'=>$opinion
+            ]);
+        }catch(\Error $e){
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+            ]);
+        }
+
+
     }
 
     /**
@@ -136,23 +155,150 @@ class VoteController extends AbstractController
         // entity manager
         $em = $this->getDoctrine()->getManager();
         $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
-        #$supportEntry = this
-        // find the vote with this ID
-        $myVote = $voteRepository->find($id);
-        $myVote->setSupporters($myVote->getSupporters()+1);
+        $supportEntryRepository = $this->getDoctrine()->getRepository('App:SupportEntry');
+        $userRepository = $this->getDoctrine()->getRepository('App:User');
+
+
+        //Check is support entry already exists
+        $supportCheck = $supportEntryRepository->findBy(['vote'=>$id, 'author'=>$this->getUser()]);
+
+        if($supportCheck == null)
+        {
+            //Create a support_entry
+            $supportEntry = new SupportEntry($vote, $this->getUser());
+            $em->persist($supportEntry);
+
+            // find the vote with this ID
+            $myVote = $voteRepository->find($id);
+            $myVote->setSupporters($myVote->getSupporters()+1);
+
+            $em->flush();
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Success! Thank you for your support on the vote!',
+                'pageMessageType'=>'success',
+
+            ]);
+
+        }else{
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Not possible! You cannot support a vote more than once.',
+                'pageMessageType'=>'danger',
+            ]);
+        }
+
+
 
         // actually executes the queries (i.e. the DELETE query)
-        $em->flush();
-
-
-        //Create a vote_entry
 
         #return $this->redirectToRoute('vote_show', array('id'=>$id) );
-        return $this->render('vote/show.html.twig', [
-            'vote' => $vote,
-            'user' => $vote->getAuthor(),
-            'pageWarning'=>'You can not support a vote more than once!'
 
-        ]);
+    }
+
+
+    /**
+     *
+     * @Route("/{id}/for", name="vote_for", methods={"GET"})
+     */
+    public function voteFor(Vote $vote, $id): Response
+    {
+        // entity manager
+        $em = $this->getDoctrine()->getManager();
+        $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
+        $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
+        $userRepository = $this->getDoctrine()->getRepository('App:User');
+
+
+        //Check is for entry already exists
+        $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
+        if($voteCheck == null)
+        {
+            //Create a vote_entry
+            $voteEntry = new VoteEntry($vote, $this->getUser(), 1);
+
+            $em->persist($voteEntry);
+
+            // find the vote with this ID
+            $myVote = $voteRepository->find($id);
+            $myVote->setForCount($myVote->getForCount()+1);
+            $em->flush();
+            $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
+            $opinion = $voteCheck->getOpinion();
+
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Success! Thank you for your vote!',
+                'pageMessageType'=>'success',
+                'userOpinion' => $opinion
+
+            ]);
+
+        }else{
+            $opinion = $voteCheck->getOpinion();
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Not possible! You cannot vote again since you already voted!',
+                'pageMessageType'=>'danger',
+                'userOpinion' => $opinion
+            ]);
+        }
+
+
+
+    }
+
+    /**
+     *
+     * @Route("/{id}/against", name="vote_against", methods={"GET"})
+     */
+    public function voteAgainst(Vote $vote, $id): Response
+    {
+        // entity manager
+        $em = $this->getDoctrine()->getManager();
+        $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
+        $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
+
+
+        //Check is against entry already exists
+        $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
+
+        if($voteCheck == null)
+        {
+            //Create a vote_entry
+            $voteEntry = new VoteEntry($vote, $this->getUser(), 2); // 2 = against
+            $em->persist($voteEntry);
+
+            // find the vote with this ID
+            $myVote = $voteRepository->find($id);
+            $myVote->setAgainstCount($myVote->getAgainstCount()+1);
+            $em->flush();
+
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Success! Thank you for your vote!',
+                'pageMessageType'=>'success',
+
+            ]);
+
+        }else{
+            $opinion = $voteCheck->getOpinion();
+
+            return $this->render('vote/show.html.twig', [
+                'vote' => $vote,
+                'user' => $vote->getAuthor(),
+                'pageMessage'=>'Not possible! You cannot vote again since you already voted!',
+                'pageMessageType'=>'danger',
+                'userOpinion' => $opinion
+            ]);
+        }
+
+
+
     }
 }

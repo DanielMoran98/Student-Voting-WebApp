@@ -28,6 +28,12 @@ class SupportEntry
      */
     private $author;
 
+    public function __construct($vote, $author)
+    {
+        $this->vote = $vote;
+        $this->author = $author;
+
+    }
     public function getId(): ?int
     {
         return $this->id;
