@@ -65,8 +65,14 @@
                                     <a href="#!" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
                                 {% endif %}
                                 {% if vote.supporters >= 50 and vote.state == 1 %}
-                                    <a href="#!" class="btn btn-success" style="width:49%">Vote for</a>
-                                    <a href="#!" class="btn btn-danger" style="width:49%">Vote against</a>
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-bottom:5px;">
+                                            <a href="#!" class="btn btn-success" style="width:100%">Vote for</a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="#!" class="btn btn-danger" style="width:100%">Vote against</a>
+                                        </div>
+                                    </div>
                                 {% endif %}
                                 {% if vote.state == 0 %}
                                     <div class="alert alert-warning" role="alert">
@@ -93,9 +99,9 @@
                         {% endif %}
                     </div>
                     <div class="col-sm-2">
-                        <a href="{{ path('vote_index') }}">BACK TO LIST</a>
+                        <a class="btn btn-primary" href="{{ path('vote_index') }}">BACK TO LIST</a>
                         <BR>
-                        <a href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>
+                        <a class="btn btn-primary" href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>
                         {{ include('vote/_delete_form.html.twig') }}
                     </div>
                 </div>
