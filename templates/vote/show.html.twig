@@ -61,7 +61,7 @@
                             {% endif %}
                             <div class="card-body">
                                 <h4 class="card-title">{{ vote.title }}</h4>
-                                <p class="text-muted">Vote proposed by {{ user }}</p>
+                                <p class="text-muted">Vote proposed by {{ vote.author }}</p>
                                 <p class="card-text">
                                     {{ vote.description }}
                                 </p>
@@ -117,10 +117,21 @@
                                     Against: {{ vote.againstCount }}
                                 </div>
                             </div>
-
                         </div>
                         {% endif %}
+
+
+                        <div class="commentSection">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Comments</h3>
+
+                                    {% include 'comment/_commentPartial.html.twig' %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="col-sm-2">
                         <a class="btn btn-primary" href="{{ path('vote_index') }}">BACK TO LIST</a>
                         <BR>

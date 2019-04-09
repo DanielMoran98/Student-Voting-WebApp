@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-body">
+        {% for comment in comments %}
+            <div class="media">
+                <img class="d-flex mr-3" src="/images/placeholderImage.png" alt="Generic placeholder image" style="width:96px; height:96px; border-radius:0.25rem;">
+                <div class="media-body">
+                    <h5 class="mt-0">{{ comment.author }}</h5>
+                    <p>{{ comment.description }}</p>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+        <form action="/vote/{{ vote.id }}/comment" method="POST">
+            <h5>Commenting as <strong>{{ user }}</strong></h5>
+            <div class="form-group">
+
+                <textarea class="form-control" rows="5" name="comment"></textarea>
+                <input type="submit" class="btn btn-primary" style="margin-top:8px;">
+            </div>
+        </form>
+    </div>
+</div>

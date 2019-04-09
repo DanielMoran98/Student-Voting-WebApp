@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Vote;
+use App\Entity\Comment;
 use App\Entity\SupportEntry;
 use App\Entity\VoteEntry;
 use App\Form\VoteType;
 use App\Repository\VoteRepository;
+use App\Repository\CommentRepository;
 use App\Repository\SupportEntryRepository;
 use App\Repository\VoteEntryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Validator\Tests\Fixtures\ToString;
 
 /**
  * @Route("/vote")
@@ -82,20 +85,24 @@ class VoteController extends AbstractController
      */
     public function show(Vote $vote, $id): Response
     {
-
+        $commentRepository = $this->getDoctrine()->getRepository('App:Comment');
+        $comments = $commentRepository->findBy(['voteID'=>$id]);
         try{
             $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
             $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
             $opinion = $voteCheck->getOpinion();
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
-                'userOpinion'=>$opinion
+                'user' => $this->getUser(),
+                'userOpinion'=>$opinion,
+                'comments'=>$comments
+
             ]);
         }catch(\Error $e){
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
+                'comments'=>$comments
             ]);
         }
 
@@ -297,6 +304,27 @@ class VoteController extends AbstractController
                 'userOpinion' => $opinion
             ]);
         }
+    }
+
+    /**
+     * @Route("/{id}/comment", name="comment_new", methods={"POST"})
+     */
+    public function commentNew(Request $request, $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
+        $myVote = $voteRepository->findOneBy(['id'=>$id]);
+        $postData = $request->request->get('comment');
+
+        $comment = new Comment();
+        $comment->setDescription($postData);
+        $comment->setAuthor($this->getUser());
+        $comment->setVoteID($myVote);
+
+        $entityManager->persist($comment);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('vote_show',['id'=>$id]);
 
 
 
