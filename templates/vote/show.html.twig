@@ -50,6 +50,11 @@
                         <!-- Content -->
                     </div>
                     <div class="col-sm-8">
+                        {% if pageWarning is defined %}
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Warning!</strong> {{ pageWarning }}
+                            </div>
+                        {% endif %}
                         <div class="card">
                             {% if vote.image is not null %}
                             <img class="card-img-top" src="{{ vote.image }}" alt="Vote image" style="max-height: 1000px;">
@@ -62,7 +67,7 @@
                                 </p>
                                 {% if vote.supporters < 50 and vote.state == 1 %}
                                     <span class="badge ">Current supporters: {{ vote.supporters }}/50</span><br>
-                                    <a href="#!" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
+                                    <a href="{{ url('vote_support',{'id':vote.id}) }}" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
                                 {% endif %}
                                 {% if vote.supporters >= 50 and vote.state == 1 %}
                                     <div class="row">

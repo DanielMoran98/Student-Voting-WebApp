@@ -131,16 +131,28 @@ class VoteController extends AbstractController
      *
      * @Route("/{id}/support", name="vote_support", methods={"GET"})
      */
-    public function support(Vote $vote): Response
+    public function support(Vote $vote, $id): Response
     {
+        // entity manager
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery(
-            'UPDATE vote
-            SET supporters = supporters + 1
-            WHERE id = 3;'
-        );
-        $query->execute();
-        return $this->redirectToRoute('vote_index');
+        $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
+        #$supportEntry = this
+        // find the vote with this ID
+        $myVote = $voteRepository->find($id);
+        $myVote->setSupporters($myVote->getSupporters()+1);
 
+        // actually executes the queries (i.e. the DELETE query)
+        $em->flush();
+
+
+        //Create a vote_entry
+
+        #return $this->redirectToRoute('vote_show', array('id'=>$id) );
+        return $this->render('vote/show.html.twig', [
+            'vote' => $vote,
+            'user' => $vote->getAuthor(),
+            'pageWarning'=>'You can not support a vote more than once!'
+
+        ]);
     }
 }
