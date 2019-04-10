@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df6a0380-ee26-4580-8a05-e0830cda7c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/comment/_commentPartial.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/VoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/VoteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/vote/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/vote/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/VoteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+            <state relative-caret-position="-2499">
+              <caret line="177" column="40" selection-start-line="177" selection-start-column="40" selection-end-line="177" selection-end-column="40" />
               <folding>
                 <element signature="e#34#54#0#PHP" expanded="true" />
               </folding>
@@ -31,72 +32,38 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/CommentRepository.php">
+        <entry file="file://$PROJECT_DIR$/src/Security/AccessDeniedHandler.php">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/VoteRepository.php">
+        <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+            <state relative-caret-position="221">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="94" column="1" lean-forward="true" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/CommentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/DefaultController.php">
+        <entry file="file://$PROJECT_DIR$/config/services.yaml">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/comment/_commentPartial.html.twig">
+        <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Comment.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Form/CommentType.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/comment/new.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/vote/show.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
+            <state relative-caret-position="459">
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -132,9 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Entitys.txt" />
-        <option value="$PROJECT_DIR$/myapp/public/css/login.css" />
-        <option value="$PROJECT_DIR$/myapp/public/css/nav.css" />
         <option value="$PROJECT_DIR$/myapp/.env" />
         <option value="$PROJECT_DIR$/myapp/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/myapp/src/Controller/LoginController.php" />
@@ -183,6 +147,9 @@
         <option value="$PROJECT_DIR$/templates/comment/_commentPartial.html.twig" />
         <option value="$PROJECT_DIR$/templates/vote/show.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/VoteController.php" />
+        <option value="$PROJECT_DIR$/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/src/Controller/AdminController.php" />
+        <option value="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" />
       </list>
     </option>
   </component>
@@ -306,30 +273,7 @@
               <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="comment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="vote" type="462c0819:PsiDirectoryNode" />
+              <item name="Security" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -381,7 +325,7 @@
       <workItem from="1553887899210" duration="2499000" />
       <workItem from="1554202629745" duration="1676000" />
       <workItem from="1554583749158" duration="38880000" />
-      <workItem from="1554799535411" duration="29493000" />
+      <workItem from="1554799535411" duration="33358000" />
     </task>
     <task id="LOCAL-00001" summary="Updated login CSS, added some new default routes">
       <created>1551993338414</created>
@@ -408,7 +352,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108992000" />
+    <option name="totallyTimeSpent" value="112857000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,7 +376,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="6" visible="true" weight="0.34985834" />
+      <window_info anchor="bottom" id="Terminal" order="6" visible="true" weight="0.20679887" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
@@ -477,64 +421,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Added gradient CSS and entities.txt" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/myapp/templates/vote/_form.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="19" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/templates/vote/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Form/VoteType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/templates/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Repository/VoteEntryRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-492" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Repository/VoteRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-186" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Entity/Vote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Repository/CommentRepository.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/src/Controller/VoteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
-          <folding>
-            <element signature="e#34#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/templates/vote/index_propositions.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -744,9 +630,6 @@
     <entry file="file://$PROJECT_DIR$/templates/comment/show.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/CommentRepository.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -772,13 +655,183 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://PHP/\App\Controller\VoteController">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>PHP</ID>
+          <OriginalElement>\App\Controller\VoteController</OriginalElement>
+          <nodes>
+            <node x="" y="">\Symfony\Contracts\Service\ServiceSubscriberInterface</node>
+            <node x="" y="">\App\Controller\VoteController</node>
+            <node x="" y="">\Symfony\Bundle\FrameworkBundle\Controller\AbstractController</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="85.5" y="93.5" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://PHP/C:/Users/Dano/Desktop/College/Year 3 - Sem 2/Web Frameworks/Student-Voting-WebApp/src/Controller">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>PHP</ID>
+          <OriginalElement>$PROJECT_DIR$/src/Controller</OriginalElement>
+          <nodes>
+            <node x="253.0" y="168.0">\App\Controller\CommentController</node>
+            <node x="383.0" y="0.0">\Symfony\Contracts\Service\ServiceSubscriberInterface</node>
+            <node x="124.0" y="168.0">\App\Controller\VoteController</node>
+            <node x="548.0" y="168.0">\App\Controller\DefaultController</node>
+            <node x="819.0" y="168.0">\App\Controller\SecurityController</node>
+            <node x="409.0" y="168.0">\App\Controller\AdminController</node>
+            <node x="691.0" y="168.0">\App\Controller\UserController</node>
+            <node x="404.5" y="79.0">\Symfony\Bundle\FrameworkBundle\Controller\AbstractController</node>
+            <node x="0.0" y="168.0">\App\Controller\PollController</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="\App\Controller\DefaultController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="609.5" y="148.0" />
+              <point x="486.78571428571433" y="148.0" />
+              <point x="18.285714285714334" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\AdminController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\CommentController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="321.0" y="148.0" />
+              <point x="450.2142857142857" y="148.0" />
+              <point x="-18.285714285714278" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\PollController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="52.0" y="128.0" />
+              <point x="413.64285714285717" y="128.0" />
+              <point x="-54.85714285714283" y="14.5" />
+            </edge>
+            <edge source="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController" target="\Symfony\Contracts\Service\ServiceSubscriberInterface">
+              <point x="0.0" y="-14.5" />
+              <point x="0.0" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\UserController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="745.0" y="138.0" />
+              <point x="505.07142857142856" y="138.0" />
+              <point x="36.571428571428555" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\VoteController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="178.5" y="138.0" />
+              <point x="431.92857142857144" y="138.0" />
+              <point x="-36.571428571428555" y="14.5" />
+            </edge>
+            <edge source="\App\Controller\SecurityController" target="\Symfony\Bundle\FrameworkBundle\Controller\AbstractController">
+              <point x="0.0" y="-14.5" />
+              <point x="882.0" y="128.0" />
+              <point x="523.3571428571429" y="128.0" />
+              <point x="54.85714285714289" y="14.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="121.0" y="134.5" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://PHP/C:/Users/Dano/Desktop/College/Year 3 - Sem 2/Web Frameworks/Student-Voting-WebApp">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>PHP</ID>
+          <OriginalElement>$PROJECT_DIR$</OriginalElement>
+          <nodes>
+            <node x="" y="">$PROJECT_DIR$/var</node>
+            <node x="" y="">$PROJECT_DIR$/bin</node>
+            <node x="" y="">$PROJECT_DIR$/config</node>
+            <node x="" y="">$PROJECT_DIR$/src</node>
+            <node x="" y="">$PROJECT_DIR$/templates</node>
+            <node x="" y="">$PROJECT_DIR$/public</node>
+            <node x="" y="">$PROJECT_DIR$/vendor</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="98.5" y="125.5" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://PHP/C:/Users/Dano/Desktop/College/Year 3 - Sem 2/Web Frameworks/Student-Voting-WebApp/src">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>PHP</ID>
+          <OriginalElement>$PROJECT_DIR$/src</OriginalElement>
+          <nodes>
+            <node x="" y="">$PROJECT_DIR$/src/Entity</node>
+            <node x="" y="">\Symfony\Component\HttpKernel\KernelInterface</node>
+            <node x="" y="">\App\Kernel</node>
+            <node x="" y="">$PROJECT_DIR$/src/Security</node>
+            <node x="" y="">$PROJECT_DIR$/src/Repository</node>
+            <node x="" y="">$PROJECT_DIR$/src/DataFixtures</node>
+            <node x="" y="">$PROJECT_DIR$/src/Form</node>
+            <node x="" y="">\Symfony\Component\HttpKernel\TerminableInterface</node>
+            <node x="" y="">$PROJECT_DIR$/src/Controller</node>
+            <node x="" y="">$PROJECT_DIR$/src/Migrations</node>
+            <node x="" y="">\Symfony\Component\HttpKernel\Kernel</node>
+            <node x="" y="">\Symfony\Component\HttpKernel\RebootableInterface</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="215.0" y="167.5" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/CommentRepository.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/VoteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+        <state relative-caret-position="-2499">
+          <caret line="177" column="40" selection-start-line="177" selection-start-column="40" selection-end-line="177" selection-end-column="40" />
           <folding>
             <element signature="e#34#54#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/AccessDeniedHandler.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="94" column="1" lean-forward="true" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
         </state>
       </provider>
     </entry>

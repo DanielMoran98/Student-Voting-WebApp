@@ -87,6 +87,7 @@ class VoteController extends AbstractController
     {
         $commentRepository = $this->getDoctrine()->getRepository('App:Comment');
         $comments = $commentRepository->findBy(['voteID'=>$id]);
+
         try{
             $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
             $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
@@ -164,7 +165,8 @@ class VoteController extends AbstractController
         $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
         $supportEntryRepository = $this->getDoctrine()->getRepository('App:SupportEntry');
         $userRepository = $this->getDoctrine()->getRepository('App:User');
-
+        $commentRepository = $this->getDoctrine()->getRepository('App:Comment');
+        $comments = $commentRepository->findBy(['voteID'=>$id]);
 
         //Check is support entry already exists
         $supportCheck = $supportEntryRepository->findBy(['vote'=>$id, 'author'=>$this->getUser()]);
@@ -182,18 +184,21 @@ class VoteController extends AbstractController
             $em->flush();
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Success! Thank you for your support on the vote!',
                 'pageMessageType'=>'success',
+                'comments'=>$comments
 
             ]);
 
         }else{
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Not possible! You cannot support a vote more than once.',
                 'pageMessageType'=>'danger',
+                'comments'=>$comments
+
             ]);
         }
 
@@ -212,11 +217,14 @@ class VoteController extends AbstractController
      */
     public function voteFor(Vote $vote, $id): Response
     {
+
         // entity manager
         $em = $this->getDoctrine()->getManager();
         $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
         $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
         $userRepository = $this->getDoctrine()->getRepository('App:User');
+        $commentRepository = $this->getDoctrine()->getRepository('App:Comment');
+        $comments = $commentRepository->findBy(['voteID'=>$id]);
 
 
         //Check is for entry already exists
@@ -237,10 +245,13 @@ class VoteController extends AbstractController
 
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Success! Thank you for your vote!',
                 'pageMessageType'=>'success',
-                'userOpinion' => $opinion
+                'userOpinion' => $opinion,
+                'comments'=>$comments
+
+
 
             ]);
 
@@ -248,10 +259,12 @@ class VoteController extends AbstractController
             $opinion = $voteCheck->getOpinion();
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Not possible! You cannot vote again since you already voted!',
                 'pageMessageType'=>'danger',
-                'userOpinion' => $opinion
+                'userOpinion' => $opinion,
+                'comments'=>$comments
+
             ]);
         }
 
@@ -269,7 +282,8 @@ class VoteController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $voteRepository = $this->getDoctrine()->getRepository('App:Vote');
         $voteEntryRepository = $this->getDoctrine()->getRepository('App:VoteEntry');
-
+        $commentRepository = $this->getDoctrine()->getRepository('App:Comment');
+        $comments = $commentRepository->findBy(['voteID'=>$id]);
 
         //Check is against entry already exists
         $voteCheck = $voteEntryRepository->findOneBy(['voteID'=>$id, 'author'=>$this->getUser()]);
@@ -287,9 +301,11 @@ class VoteController extends AbstractController
 
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Success! Thank you for your vote!',
                 'pageMessageType'=>'success',
+                'comments'=>$comments
+
 
             ]);
 
@@ -298,10 +314,12 @@ class VoteController extends AbstractController
 
             return $this->render('vote/show.html.twig', [
                 'vote' => $vote,
-                'user' => $vote->getAuthor(),
+                'user' => $this->getUser(),
                 'pageMessage'=>'Not possible! You cannot vote again since you already voted!',
                 'pageMessageType'=>'danger',
-                'userOpinion' => $opinion
+                'userOpinion' => $opinion,
+                'comments'=>$comments
+
             ]);
         }
     }

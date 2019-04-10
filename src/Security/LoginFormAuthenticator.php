@@ -90,6 +90,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('default_index');
+        return $this->urlGenerator->generate('app_login');
     }
 }
