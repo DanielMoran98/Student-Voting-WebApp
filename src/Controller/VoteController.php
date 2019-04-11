@@ -25,6 +25,7 @@ use Symfony\Component\Validator\Tests\Fixtures\ToString;
 class VoteController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/", name="vote_index", methods={"GET"})
      */
     public function index(VoteRepository $voteRepository): Response
