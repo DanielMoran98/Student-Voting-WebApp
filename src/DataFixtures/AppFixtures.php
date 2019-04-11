@@ -8,9 +8,17 @@ use App\Entity\User;
 use App\Entity\Vote;
 use App\Entity\VoteEntry;
 use App\Entity\Comment;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     public function load(ObjectManager $manager)
     {
         // $product = new Product();
@@ -18,15 +26,19 @@ class AppFixtures extends Fixture
 
         //USERS
         $user = new User();
-        $user->setUsername("Dano");
-        $user->setPassword("pass");
+        $userPass = $this->passwordEncoder->encodePassword($user, 'admin');
+
+        $user->setUsername("admin");
         $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword("$userPass");
         $manager->persist($user);
 
         $user1 = new User();
-        $user1->setUsername("Tom");
-        $user1->setPassword("pass");
+        $userPass1 = $this->passwordEncoder->encodePassword($user1, 'user');
+
+        $user1->setUsername("user");
         $user1->setRoles(['ROLE_USER']);
+        $user1->setPassword("$userPass1");
         $manager->persist($user1);
 
 
@@ -72,10 +84,7 @@ class AppFixtures extends Fixture
 
 
         //VOTE ENTRIES
-        $voteEntry1 = new voteEntry();
-        $voteEntry1->setAuthor($user);
-        $voteEntry1->setOpinion(1);
-        $voteEntry1->setVoteID($vote1);
+        $voteEntry1 = new voteEntry($vote1,$user, 1);
         $manager->persist($voteEntry1);
 
         $comment1 = new Comment();

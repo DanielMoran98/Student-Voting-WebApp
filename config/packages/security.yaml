@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Entity\User: plaintext
+        App\Entity\User: bcrypt
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
