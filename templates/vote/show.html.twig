@@ -60,8 +60,8 @@
                             <img class="card-img-top" src="{{ vote.image }}" alt="Vote image" style="max-height: 1000px;">
                             {% endif %}
                             <div class="card-body">
-                                <h4 class="card-title">{{ vote.title }}</h4>
-                                <p class="text-muted">Vote proposed by {{ vote.author }}</p>
+                                <h4 class="card-title" style="margin-bottom:5px;">{{ vote.title }}</h4> <p class="text-muted" style="margin-top:0px; margin-bottom:0px !important;">{{  vote.dateCreated|date('d/m/Y') }} at {{ vote.dateCreated|date('H:m')}}</p>
+                                <p class="text-muted">Vote proposed by {{ vote.author }} </p>
                                 <p class="card-text">
                                     {{ vote.description }}
                                 </p>
@@ -125,14 +125,13 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3>Comments</h3>
-
                                     {% include 'comment/_commentPartial.html.twig' %}
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-2 sidebar">
                         <a class="btn btn-primary" href="{{ path('vote_index') }}">BACK TO LIST</a>
                         <BR>
                         <a class="btn btn-primary" href="{{ path('vote_edit', {'id': vote.id}) }}">EDIT</a>

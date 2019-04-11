@@ -38,9 +38,9 @@
                     {#</td>#}
                 {#</tr>#}
                 <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     {% for vote in votes %}
                     {% if vote.supporters < 50 %}
                     <div class="shadow p-3 mb-5 bg-light rounded">
@@ -60,7 +60,7 @@
                     {% endif %}
                     {% endfor %}
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <a href="{{ path('vote_new') }}" class="btn btn-lg btn-primary">CREATE NEW</a>
 
                 </div>

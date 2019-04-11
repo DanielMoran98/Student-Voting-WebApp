@@ -20,10 +20,16 @@ a{
     border-color:#40798c;
 }
 .card>img{
-    max-height: 300px;
+    max-height: 425px;
+    object-fit:cover;
     border-top-left-radius:0.25rem;
     border-top-right-radius:0.25rem;
 }
 .shadow{
     padding:0px !important;
+}
+
+.sidebar .btn{
+    min-width:125px;
+    margin-bottom: 2px;
 }

@@ -10,7 +10,10 @@
             </div>
             <hr>
         {% endfor %}
-
+        {% if comments|length < 1 %}
+            <p style="margin:0px;">No comments on this vote</p>
+        {% endif %}
+        {% if user is not null %}
         <form action="/vote/{{ vote.id }}/comment" method="POST">
             <h5>Commenting as <strong>{{ user }}</strong></h5>
             <div class="form-group">
@@ -19,5 +22,6 @@
                 <input type="submit" class="btn btn-primary" style="margin-top:8px;">
             </div>
         </form>
+        {% endif %}
     </div>
 </div>
