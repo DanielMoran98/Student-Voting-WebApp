@@ -1,1 +1,1 @@
-web: php -S localhost:8000 -t public
+web: php bin/console server:run
