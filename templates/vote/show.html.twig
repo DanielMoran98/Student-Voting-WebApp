@@ -67,7 +67,14 @@
                                 </p>
                                 {% if vote.supporters < 50 and vote.state == 1 %}
                                     <span class="badge ">Current supporters: {{ vote.supporters }}/50</span><br>
-                                    <a href="{{ url('vote_support',{'id':vote.id}) }}" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
+                                    {% if not is_granted('ROLE_USER') %}
+                                        <div class="alert alert-info" role="alert">
+                                            <strong>Heads up!</strong> You must <strong><a href="{{ url('app_login') }}">Login</a></strong> to support this vote!
+                                        </div>
+                                    {% else %}
+                                        <a href="{{ url('vote_support',{'id':vote.id}) }}" class="btn btn-primary">Support 'Proposition #{{ vote.id }}'</a><br>
+
+                                    {% endif %}
                                 {% endif %}
 
                                 {% if vote.supporters >= 50 and vote.state == 1 %}
