@@ -78,6 +78,9 @@
       <path value="$PROJECT_DIR$/myapp/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/myapp/vendor/symfony/inflector" />
       <path value="$PROJECT_DIR$/myapp/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/myapp/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/myapp/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/myapp/vendor/symfony/security-guard" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

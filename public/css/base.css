@@ -1,0 +1,35 @@
+body{
+
+}
+.main-content{
+    background-color:#FAFAFA;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+a{
+    color: #48083b;
+}
+
+.btn-primary{
+    background-color: #40798c;
+    border-color:#48083b;
+}
+.btn-primary:hover{
+    background-color:#48083b;
+    border-color:#40798c;
+}
+.card>img{
+    max-height: 425px;
+    object-fit:cover;
+    border-top-left-radius:0.25rem;
+    border-top-right-radius:0.25rem;
+}
+.shadow{
+    padding:0px !important;
+}
+
+.sidebar .btn{
+    min-width:125px;
+    margin-bottom: 2px;
+}

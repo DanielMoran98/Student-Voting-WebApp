@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-body">
+        {% for comment in comments %}
+            <div class="media">
+                <img class="d-flex mr-3" src="/images/placeholderImage.png" alt="Generic placeholder image" style="width:96px; height:96px; border-radius:0.25rem;">
+                <div class="media-body">
+                    <div class="row" style="overflow:hidden">
+                        <div class="col-sm-12">
+                            <h5 class="mt-0">{{ comment.author }}</h5>
+                            <p>{{ comment.description }}</p>
+                        </div>
+
+                    </div>
+                    <row >
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ url('comment_delete', {'id': comment.id}) }}" class="btn btn-danger" style="margin-right:55px;">DELETE</a>
+                        {% endif %}
+                    </row>
+
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+        {% if comments|length < 1 %}
+            <p style="margin:0px;">No comments on this vote</p>
+        {% endif %}
+        {% if user is not null %}
+        <form action="/vote/{{ vote.id }}/comment" method="POST">
+            <h5>Commenting as <strong>{{ user }}</strong></h5>
+            <div class="form-group">
+
+                <textarea class="form-control" rows="5" name="comment"></textarea>
+                <input type="submit" class="btn btn-primary" style="margin-top:8px;">
+            </div>
+        </form>
+        {% endif %}
+    </div>
+</div>

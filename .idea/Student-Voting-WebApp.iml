@@ -66,8 +66,11 @@
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/profiler-pack" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/property-access" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/security-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/security-core" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/security-csrf" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/security-guard" />
+      <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/security-http" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/twig-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/vendor/symfony/twig-bundle" />
