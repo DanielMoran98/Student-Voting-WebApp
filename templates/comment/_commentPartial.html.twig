@@ -4,8 +4,19 @@
             <div class="media">
                 <img class="d-flex mr-3" src="/images/placeholderImage.png" alt="Generic placeholder image" style="width:96px; height:96px; border-radius:0.25rem;">
                 <div class="media-body">
-                    <h5 class="mt-0">{{ comment.author }}</h5>
-                    <p>{{ comment.description }}</p>
+                    <div class="row" style="overflow:hidden">
+                        <div class="col-sm-12">
+                            <h5 class="mt-0">{{ comment.author }}</h5>
+                            <p>{{ comment.description }}</p>
+                        </div>
+
+                    </div>
+                    <row >
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ url('comment_delete', {'id': comment.id}) }}" class="btn btn-danger" style="margin-right:55px;">DELETE</a>
+                        {% endif %}
+                    </row>
+
                 </div>
             </div>
             <hr>

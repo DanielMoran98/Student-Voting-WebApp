@@ -31,7 +31,7 @@
             {% endif %}
             {% if not is_granted('ROLE_USER') %}
                 <li class="nav-item">
-                    <a class="nav-link {% if app.request.attributes.get('_route') starts with 'login' %}active{% endif %}" href="{{ url('app_login') }}" >LOGIN</a>
+                    <a class="nav-link {% if app.request.attributes.get('_route') starts with 'app_login' %}active{% endif %}" href="{{ url('app_login') }}" >LOGIN</a>
                 </li>
             {% endif %}
             {% if is_granted('ROLE_USER') %}

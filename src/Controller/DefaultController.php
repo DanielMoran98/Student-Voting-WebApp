@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class DefaultController extends AbstractController
 {
@@ -21,16 +23,6 @@ class DefaultController extends AbstractController
      * @Route("/about", name="default_about")
      */
     public function about()
-    {
-        $template = 'default/index.html.twig';
-        $args = ['controller_name' => 'DefaultController'];
-        return $this->render($template,$args);
-    }
-
-    /**
-     * @Route("/upcoming", name="default_upcoming")
-     */
-    public function upcoming()
     {
         $template = 'default/index.html.twig';
         $args = ['controller_name' => 'DefaultController'];

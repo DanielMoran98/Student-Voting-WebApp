@@ -46,6 +46,7 @@ class VoteController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/finished", name="vote_finished", methods={"GET"})
      */
     public function finished(VoteRepository $voteRepository): Response
