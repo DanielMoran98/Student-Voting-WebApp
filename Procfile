@@ -1,1 +1,1 @@
-web: php bin/console server:run
+web: vendor/bin/heroku-php-apache2 public/
