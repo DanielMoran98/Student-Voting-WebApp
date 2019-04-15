@@ -113,7 +113,7 @@ class VoteController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="vote_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Vote $vote): Response
@@ -136,7 +136,7 @@ class VoteController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="vote_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Vote $vote): Response
