@@ -34,6 +34,9 @@ a{
     margin-bottom: 2px;
 }
 
+#baseBody{
+    min-height:550px;
+}
 #baseBody p>a{
     font-weight: 500;
 }
