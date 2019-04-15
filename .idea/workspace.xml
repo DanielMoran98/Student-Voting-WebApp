@@ -296,6 +296,11 @@
               <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Student-Voting-WebApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Student-Voting-WebApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -349,7 +354,7 @@
       <workItem from="1554583749158" duration="38880000" />
       <workItem from="1554799535411" duration="40816000" />
       <workItem from="1554986813494" duration="22599000" />
-      <workItem from="1555338579985" duration="2059000" />
+      <workItem from="1555338579985" duration="2306000" />
     </task>
     <task id="LOCAL-00001" summary="Updated login CSS, added some new default routes">
       <created>1551993338414</created>
@@ -376,7 +381,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144973000" />
+    <option name="totallyTimeSpent" value="145220000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,7 +394,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="34" y="0" width="1508" height="830" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21754144" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
