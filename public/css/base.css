@@ -33,3 +33,7 @@ a{
     min-width:125px;
     margin-bottom: 2px;
 }
+
+#baseBody p>a{
+    font-weight: 500;
+}

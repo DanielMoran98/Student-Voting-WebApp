@@ -5,7 +5,7 @@ poll-y is a web application developed with the student union of Technological Un
 We will then be able to visualize the results and see the general opinion on the students in the college on certain topics, which will allow the student union to know what new additions or changes to the college the students value most.
 
 ## Live demo
-[poll-y.herokuapp.com](poll-y.herokuapp.com)
+[poll-y.herokuapp.com](http://www.poll-y.herokuapp.com)
 
 ## Features
 - Admin/User accounts
