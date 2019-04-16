@@ -32,14 +32,18 @@
         </style>
     </head>
     <body>
-        {% include 'nav.html.twig' %}
+        <div class="wrapper">
+            {% include 'nav.html.twig' %}
+            <div id="baseBody" style="margin:50px;">
+                {% block body %}
 
-        <div id="baseBody" style="margin:50px;">
-            {% block body %}
-
-            {% endblock %}
+                {% endblock %}
+            </div>
+            {% if app.request.attributes.get('_route')  starts with 'app_login'%}
+            {% else %}
+                {% include 'footer.html.twig' %}
+            {% endif %}
         </div>
-        {% include 'footer.html.twig' %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

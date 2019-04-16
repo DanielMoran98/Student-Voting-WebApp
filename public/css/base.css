@@ -36,7 +36,14 @@ a{
 
 #baseBody{
     min-height:550px;
+    position:relative;
+
+
 }
 #baseBody p>a{
     font-weight: 500;
+}
+
+.wrapper{
+    position:relative;
 }
