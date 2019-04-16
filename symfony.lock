@@ -144,6 +144,9 @@
     "facebook/webdriver": {
         "version": "1.6.0"
     },
+    "fzaninotto/faker": {
+        "version": "v1.8.0"
+    },
     "guzzlehttp/guzzle": {
         "version": "6.3.3"
     },

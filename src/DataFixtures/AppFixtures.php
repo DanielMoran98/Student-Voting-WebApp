@@ -9,6 +9,7 @@ use App\Entity\Vote;
 use App\Entity\VoteEntry;
 use App\Entity\Comment;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
@@ -21,6 +22,8 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $faker = Factory::create();
+
         // $product = new Product();
         // $manager->persist($product);
 
@@ -40,6 +43,19 @@ class AppFixtures extends Fixture
         $user1->setRoles(['ROLE_USER']);
         $user1->setPassword("$userPass1");
         $manager->persist($user1);
+
+        for($i = 0; $i<15; $i++)
+        {
+            $randomUser = new User();
+            $randomUserPass = $this->passwordEncoder->encodePassword($randomUser, 'user');
+            $firstName = $faker->firstName;
+            $lastName = $faker->lastName;
+
+            $randomUser->setUsername($firstName.$lastName.$i%5);
+            $randomUser->setRoles(['ROLE_USER']);
+            $randomUser->setPassword("$randomUserPass");
+            $manager->persist($randomUser);
+        }
 
 
         //VOTES
@@ -77,20 +93,17 @@ class AppFixtures extends Fixture
         $vote4->setAuthor($user1);
         $vote4->setDateCreated(new \DateTime());
         $vote4->setSupporters(65);
-        $vote4->setForCount(75);
-        $vote4->setAgainstCount(25);
+        $vote4->setForCount(77);
+        $vote4->setAgainstCount(23);
         $vote4->setState(0);
         $manager->persist($vote4);
 
 
-        //VOTE ENTRIES
-        $voteEntry1 = new voteEntry($vote1,$user, 1);
-        $manager->persist($voteEntry1);
-
+        //Comments
         $comment1 = new Comment();
         $comment1->setVoteID($vote1);
         $comment1->setAuthor($user);
-        $comment1->setDescription("This is a comment");
+        $comment1->setDescription("I think this will be a great change for the college!");
         $manager->persist($comment1);
 
 

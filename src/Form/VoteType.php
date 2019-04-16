@@ -19,7 +19,7 @@ class VoteType extends AbstractType
             ##->add('forCount')
             ##->add('againstCount')
             ##->add('dateCreated')
-            ##->add('state')
+            ->add('state')
             ->add('author')
         ;
     }
