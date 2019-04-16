@@ -1,0 +1,18 @@
+Images:
+
+    Image: VoteImage01
+    URL:  https://www.hera.org.nz/wp-content/uploads/20180412_Event_WeldingSupervisorExams_WELD-AM.jpg
+    Author: HERA
+
+    Image: VoteImage02
+    URL:  http://t7news.in/wp-content/uploads/2018/05/Social-Media-Marketing-Political-Election-Campaign-Propaganda.jpg
+    Author: t7News
+
+    Image: VoteImage03
+    URL:  https://st2.depositphotos.com/8072304/11806/i/950/depositphotos_118067248-stock-photo-school-lunch-box-with-sandwich.jpg
+    Author: 123rf
+
+    Image: VoteImage04
+    URL:  https://library.itb.ie/wp-content/uploads/2018/04/Get-Help-ITB-Library.jpg
+    Author: Institute of Technology Blanchardstown
+

@@ -33,3 +33,17 @@ a{
     min-width:125px;
     margin-bottom: 2px;
 }
+
+#baseBody{
+    min-height:550px;
+    position:relative;
+
+
+}
+#baseBody p>a{
+    font-weight: 500;
+}
+
+.wrapper{
+    position:relative;
+}
